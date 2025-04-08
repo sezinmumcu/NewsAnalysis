@@ -1,64 +1,98 @@
-# BBC News Article Analysis & Summarization System
+# BBC News Article Analysis and Summarization
 
-## Overview
-This project analyzes a dataset of 515,000 hotel reviews from across Europe to extract actionable insights about customer satisfaction patterns. Using machine learning techniques, I developed models to predict review scores, identify key factors influencing ratings, and discover geographical patterns in hotel performance.
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![NLTK](https://img.shields.io/badge/NLTK-3.7-green.svg)
+![Hugging Face](https://img.shields.io/badge/HuggingFace-Transformers-yellow.svg)
+![WordCloud](https://img.shields.io/badge/WordCloud-1.8.2-orange.svg)
 
-## Dataset
-The dataset contains comprehensive information about hotel reviews:
-- **Review content**: Positive and negative reviews with word counts
-- **Reviewer details**: Nationality, review history, scoring patterns
-- **Hotel information**: Location (latitude/longitude), average scores
-- **Trip context**: Tags indicating trip type, duration, traveler type
+## 📋 Project Overview
 
-## Key Technical Implementations
+This project addresses the need to efficiently analyze and summarize textual information by developing a comprehensive document analysis and summarization system for BBC news articles. The system processes 500 BBC news articles across five categories, extracting valuable insights through statistical analysis, text mining, and automated summarization.
 
-### 1. Data Preprocessing & Feature Engineering
-- Cleaned and normalized 515,738 reviews across multiple European countries
-- Created sentiment polarity features using TextBlob to quantify review sentiment
-- Engineered features from unstructured text data (review length, word counts)
-- Extracted stay duration and trip type from tag metadata
+## 🔍 Features
 
-### 2. Classification Model
-- Implemented Random Forest Classifier to predict high vs. low review scores
-- Achieved 76.5% accuracy with sentiment-enhanced features
-- Optimized hyperparameters through exhaustive grid search
-- Confusion matrix analysis showed balanced precision/recall (0.76/0.78)
+- **Statistical Text Analysis**: Calculates metrics like word/sentence counts, average word/sentence lengths
+- **Content Insights**: Identifies common words and phrases in each article
+- **Automated Summarization**: Generates concise summaries using Facebook's BART model
+- **Visual Representations**: Creates word clouds to visualize word frequency distributions
+- **Comprehensive Output**: Exports all analysis results to a structured CSV file
 
-### 3. Geospatial Analysis
-- Clustered hotels based on geographical proximity using K-means
-- Visualized spatial patterns with interactive Folium maps
-- Identified regional variations in review scores across Europe
-- Correlated location clusters with rating patterns
+## 🛠️ Technical Implementation
 
-### 4. Reviewer Nationality Analysis
-- Discovered significant variations in scoring patterns across nationalities
-- Clustered 50 nationality groups based on average review scores
-- Visualized nationality distribution within clusters
-- Identified potential cultural biases in review scoring
+The system leverages Python's ecosystem of text processing libraries:
 
-## Key Findings
+- **NLTK**: For text tokenization, stopword removal, and linguistic analysis
+- **Pandas**: For efficient data manipulation and CSV processing
+- **Hugging Face Transformers**: For implementing BART-based text summarization
+- **WordCloud**: For generating word frequency visualizations 
+- **Matplotlib**: For creating and displaying plots
 
-1. **Review Content Matters**: 
-   - Total review length and sentiment polarity are strong predictors of overall scores
-   - Positive word count has 3x more predictive power than negative word count
+The workflow includes:
+1. Text preprocessing
+2. Statistical metrics calculation
+3. Word frequency analysis
+4. Phrase extraction
+5. Word cloud generation
+6. Text summarization
+7. Results compilation
 
-2. **Trip Context Influences Ratings**:
-   - Business travelers rate hotels more critically than leisure travelers
-   - Longer stays correlate with more balanced reviews
-   - Couples tend to give higher ratings than solo travelers or families
+## 📊 Sample Output
 
-3. **Geographical Patterns**:
-   - Clear clustering of highly-rated hotels in specific European regions
-   - Hotels in similar locations tend to receive similar ratings
-   - Outlier detection identified hotels significantly outperforming their geographical neighbors
+The analysis produces a comprehensive CSV with the following columns:
+- `category`: News article category (business, politics, tech, etc.)
+- `filename`: Original file identifier
+- `title`: Article title
+- `content`: Article text content
+- `num_sentences`: Count of sentences in the article
+- `num_words`: Count of words in the article
+- `avg_word_length`: Average character length of words
+- `avg_sentence_length`: Average number of words per sentence
+- `common_words`: Most frequent words (excluding stopwords)
+- `common_phrases`: Most common multi-word expressions
 
-4. **Nationality Bias**:
-   - Identified systematic variations in how different nationalities rate hotels
-   - Some nationality groups consistently give higher/lower scores regardless of hotel quality
+## 📁 Project Structure
 
-## Technologies Used
-- **Python**: pandas, numpy, scikit-learn, matplotlib, seaborn
-- **Machine Learning**: Random Forest, K-means clustering, Isolation Forest
-- **NLP**: TextBlob for sentiment analysis
-- **Geospatial**: Folium for interactive maps
-- **Visualization**: Matplotlib, Seaborn
+```
+├── Group_12_TRM.ipynb     # Main notebook with all code
+├── bbc-news-data.csv      # Input dataset (tab-separated)
+├── bbc_news_analysis.csv  # Output analysis results
+└── README.md              # Project documentation
+```
+
+## 🔧 Usage
+
+1. Clone the repository
+2. Install required dependencies:
+   ```
+   pip install nltk pandas wordcloud matplotlib transformers
+   ```
+3. Download required NLTK resources:
+   ```python
+   import nltk
+   nltk.download('punkt')
+   nltk.download('stopwords')
+   ```
+4. Run the Jupyter notebook:
+   ```
+   jupyter notebook NewsAnalysis.ipynb
+   ```
+
+## 🧩 Core Components
+
+### DocumentAnalyzer Class
+
+The central engine of the system with methods for:
+- Text statistics calculation
+- Common word and phrase extraction
+- Word cloud generation
+- Text summarization using BART
+- DataFrame processing
+
+### Testing Suite
+
+A comprehensive testing framework that validates all system components:
+- Basic statistics calculation
+- Common words and phrases extraction
+- Text summarization functionality
+- DataFrame processing operations
+- Word cloud generation
