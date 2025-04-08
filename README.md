@@ -53,7 +53,7 @@ The analysis produces a comprehensive CSV with the following columns:
 ## 📁 Project Structure
 
 ```
-├── Group_12_TRM.ipynb     # Main notebook with all code
+├── NewsAnalysis.ipynb     # Main notebook with all code
 ├── bbc-news-data.csv      # Input dataset (tab-separated)
 ├── bbc_news_analysis.csv  # Output analysis results
 └── README.md              # Project documentation
