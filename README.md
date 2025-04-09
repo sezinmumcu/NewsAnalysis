@@ -15,6 +15,7 @@ This project addresses the need to efficiently analyze and summarize textual inf
 - **Content Insights**: Identifies common words and phrases in each article
 - **Automated Summarization**: Generates concise summaries using Facebook's BART model
 - **Visual Representations**: Creates word clouds to visualize word frequency distributions
+
   _A sample word cloud:_
   ![A sample word cloud](https://github.com/user-attachments/assets/cd3f3559-edad-4c56-822d-ab44d083d4d3)
 - **Comprehensive Output**: Exports all analysis results to a structured CSV file
